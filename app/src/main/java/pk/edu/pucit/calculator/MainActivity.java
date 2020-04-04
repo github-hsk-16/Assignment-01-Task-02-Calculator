@@ -5,13 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.HashMap;
 import java.util.Map;
 import org.mariuszgromada.math.mxparser.*;
 
 public class MainActivity extends AppCompatActivity{
 
-    String input_equation = "";
     String output_result = "";
     String eq = "0";
 
@@ -159,7 +160,7 @@ public class MainActivity extends AppCompatActivity{
                     else
                     {
                         Expression e = new Expression(eq);
-                        output_result = String.valueOf(e.calculate());
+                        output_result = new DecimalFormat("0.00").format(Double.parseDouble( String.valueOf(e.calculate())));
                         o.setText(output_result);
                         eq += ch;
                     }
